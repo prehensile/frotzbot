@@ -1,0 +1,3 @@
+[submodule "app/botkit"]
+	path = app/botkit
+	url = git@github.com:prehensile/botkit.git
