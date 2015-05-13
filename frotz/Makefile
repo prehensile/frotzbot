@@ -195,17 +195,17 @@ FLAGS = $(OPTS) $(CURSES_DEFS) $(INCL)
 $(NAME): $(NAME)-curses
 curses:  $(NAME)-curses
 $(NAME)-curses: $(COMMON_TARGET) $(CURSES_TARGET) $(BLORB_TARGET)
-	$(CC) -o $(BINNAME)$(EXTENSION) $(TARGETS) $(LIB) $(CURSES) $(SOUND_LIB)
+	$(CC) -fPIC -o $(BINNAME)$(EXTENSION) $(TARGETS) $(LIB) $(CURSES) $(SOUND_LIB)
 
 dumb:		$(NAME)-dumb
 d$(NAME):	$(NAME)-dumb
 $(NAME)-dumb:		$(COMMON_TARGET) $(DUMB_TARGET)
-	$(CC) -o d$(BINNAME)$(EXTENSION) $(COMMON_TARGET) $(DUMB_TARGET) $(LIB)
+	$(CC) -fPIC -o d$(BINNAME)$(EXTENSION) $(COMMON_TARGET) $(DUMB_TARGET) $(LIB)
 
 sdl:		$(NAME)-sdl
 s$(NAME):	$(NAME)-sdl
 $(NAME)-sdl:	$(COMMON_TARGET) $(SDL_TARGET) $(BLORB_TARGET)
-	$(CC) -o s$(BINNAME) $(COMMON_TARGET) $(SDL_TARGET) $(BLORB_TARGET) $(SDL_LIBS)
+	$(CC) -fPIC -o s$(BINNAME) $(COMMON_TARGET) $(SDL_TARGET) $(BLORB_TARGET) $(SDL_LIBS)
 
 all:	$(NAME) d$(NAME)
 
@@ -214,19 +214,19 @@ all:	$(NAME) d$(NAME)
 .SUFFIXES: .c .o .h
 
 $(COMMON_OBJECT): %.o: %.c
-	$(CC) $(OPTS) $(COMMON_DEFS) -o $@ -c $<
+	$(CC) -fPIC $(OPTS) $(COMMON_DEFS) -o $@ -c $<
 
 $(BLORB_OBJECT): %.o: %.c
-	$(CC) $(OPTS) -o $@ -c $<
+	$(CC) -fPIC $(OPTS) -o $@ -c $<
 
 $(DUMB_OBJECT): %.o: %.c
-	$(CC) $(OPTS) -o $@ -c $<
+	$(CC) -fPIC $(OPTS) -o $@ -c $<
 
 $(CURSES_OBJECT): %.o: %.c
-	$(CC) $(OPTS) $(CURSES_DEFS) -o $@ -c $<
+	$(CC) -fPIC $(OPTS) $(CURSES_DEFS) -o $@ -c $<
 
 $(SDL_OBJECT): %.o: %.c
-	$(CC) $(OPTS) $(SDL_DEFS) -o $@ -c $<
+	$(CC) -fPIC $(OPTS) $(SDL_DEFS) -o $@ -c $<
 
 
 # If you're going to make this target manually, you'd better know which

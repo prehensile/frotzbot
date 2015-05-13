@@ -1,0 +1,6 @@
+.env
+*.o
+*.pyc
+*.a
+app/saves
+app/stories
